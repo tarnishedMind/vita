@@ -48,9 +48,13 @@ class itemsPage extends dynamicPage {
 		
 		$(globalDiv).append(element('input', {'type':'hidden','id':'pictureURL','name':'pictureURL'}, null, null, null));
 		
-		var l1 = element('label', {'for':'coins'}, {'margin-left':'0'}, ["control-label"], ['Стоимость:']);
-		var i1 = element('input', {'name':'coins','type':'text','id':'coins'}, null, ["form-control"], null);
-		var d1 = element('div', null, null, ["inner"], [i1]);
+		var span = element('span', {'id':'basic-addon2'}, null, ["input-group-addon"], ['руб.']);
+		var i1 = element('input', {'name':'cost','type':'number','id':'cost','placeholder':'стоимость товара','aria-describedby':'basic-addon2'}, null, ["form-control"], null);		
+		var divRub = element('div', null, null, ["input-group"], [i1,span]); 		
+		
+		var d1 = element('div', null, null, ["inner"], [divRub]);
+		var l1 = element('label', {'for':'cost'}, {'margin-left':'0'}, ["control-label"], ['Стоимость:']);
+		
 		$(globalDiv).append(element('div', null, null, ["myInput", "form-horizontal"], [l1,d1]));
 		
 		var l2 = element('label', {'for':'layer'}, {'margin-left':'0'}, ["control-label"], ['Слой:']);

@@ -90,7 +90,7 @@ class diagramMonthPage extends dynamicPage {
 
     let time_interval = [toTime(time_begin), toTime(time_end)];
     console.log(time_interval);
-		do_after_google_chart_loads(() => show_data(1, g_data, time_interval));
+		do_after_google_chart_loads(() => show_data(1, g_data, time_interval)); //отрисовка!!!!!!!!!!
   }
 
   init_calendar() {

@@ -45,13 +45,26 @@ class productsPage extends dynamicPage {
 		$(globalDiv).append(element('input', {'type':'hidden','id':'pictureURL','name':'pictureURL'}, null, ["form-control"], null));
 		
 		var l1 = element('label', {'for':'cost'}, {'margin-left':'0'}, ["control-label"], ['Стоимость:']);
+		
+		/*!!!!!!!!!!!!!!!!
+		var l1 = element('label', {'for':'cost'}, {'margin-left':'0'}, ["control-label"], ['Стоимость:']);
 		var i1 = element('input', {'name':'cost','type':'text','id':'cost'}, null, ["form-control"], null);
 		var d1 = element('div', null, null, ["inner"], [i1]);
+		$(globalDiv).append(element('div', null, null, ["myInput", "form-horizontal"], [l1,d1]));
+		!!!!!!!!!!!!!!!!!!*/		
+		
+		var span = element('span', {'id':'basic-addon2'}, null, ["input-group-addon"], ['руб.']);
+		var i1 = element('input', {'name':'cost','type':'number','id':'cost','placeholder':'стоимость товара','aria-describedby':'basic-addon2'}, null, ["form-control"], null);		
+		var divRub = element('div', null, null, ["input-group"], [i1,span]); 		
+		
+		var d1 = element('div', null, null, ["inner"], [divRub]);
+		var l1 = element('label', {'for':'cost'}, {'margin-left':'0'}, ["control-label"], ['Стоимость:']);
+		
 		$(globalDiv).append(element('div', null, null, ["myInput", "form-horizontal"], [l1,d1]));
 		
 		$(globalDiv).append(element('input', {'type':'submit', 'value':"Добавить запись",'id':'add'}, {"float":"right"}, ["update-btn", "btn", "btn-default"], null));
 		return globalDiv;
-	}
+	}	
 
 	formEditBlock() {
 		super.formEditBlock();
