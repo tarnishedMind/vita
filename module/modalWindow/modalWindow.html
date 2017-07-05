@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<head>
+	<title>Создаем модальное окно на HTML5 и CSS3</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="style.css">
+	<script src="modalWindow.js"></script>
+</head>
+
+<body>
+
+<!--<a href="#openModal">Открыть модальное окно</a>-->
+
+<div id="openModal" class="modalDialog">
+	<div>
+		<a href="#close" title="Закрыть" class="close">X</a>
+		<h2>Модальное окно</h2>
+		<p>Прмер простого модального окна, которое может быть создано с использованием CSS3.</p>
+		<p>Его можно использовать в широком диапазоне, начиная от вывода сообщений и заканчивая формой регистрации.</p>
+	</div>
+</div>
+<script>
+	let modal = new modalWindow();
+	modal.openWindow();
+</script>
+</body>
+</html>

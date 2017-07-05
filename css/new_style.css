@@ -1,0 +1,59 @@
+.correctIndent{
+	margin: 6px 3px;
+	float:left;
+}
+
+.cost{
+	font-size: 10pt; /*шрифт для цены*/
+}
+.productName{
+	font-size: 10pt; /*шрифт для названия товара*/	
+}
+
+.span3 > .thumbnail > img {/*сам товар*/
+	border: 1px dashed grey;
+	width: 190px;
+	height: 135px;
+}
+
+.span3 > .thumbnail {
+	padding: 2px;
+}
+
+.deleteProduct { /*кнопка удаления*/
+		border-radius: 50%;
+		width: 20px;
+		height: 20px;
+		background-image: url('../imgs/delete.jpg');
+		background-color: white;
+		background-repeat:no-repeat;		
+		background-position: center;
+		background-size: 70%;
+		text-indent:-9999px;
+		position: relative;
+		margin-left: 5px;		
+		}
+		
+.editProduct {/*кнопка редактирования*/
+		border-radius: 50%;
+		width: 20px;
+		height: 20px;
+		background-image: url('../imgs/edit.jpg');
+		background-color: white;
+		background-repeat:no-repeat;		
+		background-position: center;
+		background-size: 70%;
+		text-indent:-9999px;
+		position: relative;
+		}
+
+.span3 { 
+    list-style-type: none; 
+	height: 200px; 
+	width: 210px;
+}   
+   
+.span3 > .thumbnail > p { 
+	 margin: 2% 3%;
+}
+   
