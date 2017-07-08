@@ -12,10 +12,15 @@ class ratingPage  extends dynamicPage {
 		lastMonth.setYear(lastMonth.getYear()-1);
 		var formatedLast = lastMonth.format("yyyy-mm-dd");
 		
-		var dataArr = getRequest(this.serverPageUrl,{'beginPeriod':'2016-05-25','endPeriod':formatedNow});
-		var nameArr = ['ID','Оценка','Дата оценивания', 'Комментарий', 'Пользователь', 'Предмет оценки'];
+		//var dataArr = getRequest(this.serverPageUrl,{'beginPeriod':'2016-05-25','endPeriod':formatedNow});
+		var dataArr = getRequest(this.serverPageUrl,{'type':'users'});
+		var nameArr = ['ID','Номер отряда','Номер звания','Имя','Фамилия','Пол','Статус подтверждения','XP','Звёзды','Монеты'];
 		
-		var userData = getRequest(this.user.serverPageUrl,{});		
+		var userData = getRequest(this.user.serverPageUrl,{});
+		
+		//?beginPeriod=2017-05-01&endPeriod=2017-05-20
+		//?type=users
+		/*
 		for(var i=0; i<dataArr.length; i++)
 			for(var j=0; j<userData.length; j++)
 			if(dataArr[i].userId == userData[j].id){
@@ -30,11 +35,12 @@ class ratingPage  extends dynamicPage {
 				dataArr[i].userValueSliceId = departmentData[j].name;
 				break;
 			}
-		
+		*/
 		var tt = super.formTableBlock(nameArr, dataArr, Array('delete'));
 		$(tt).addClass("table table-bordered");
 		
 		return $(tt);
+		
 	}
 	
 	setSearchClicker(searchString){
