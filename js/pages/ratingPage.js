@@ -13,14 +13,24 @@ class ratingPage  extends dynamicPage {
 		var formatedLast = lastMonth.format("yyyy-mm-dd");
 		
 		//var dataArr = getRequest(this.serverPageUrl,{'beginPeriod':'2016-05-25','endPeriod':formatedNow});
+		
+		
+		//  !!!!!!!! пользователи - ?type=users
 		var dataArr = getRequest(this.serverPageUrl,{'type':'users'});
 		var nameArr = ['ID','Номер отряда','Номер звания','Имя','Фамилия','Пол','Статус подтверждения','XP','Звёзды','Монеты'];
+				
 		
+		//!!!!!!!!!!!!отряды - ?type=teams
+		//var dataArr = getRequest(this.serverPageUrl,{'type':'teams'});
+		//var nameArr = ['ID','Название','Санаторий','Губерния','XP','Звёзды','Монеты'];
+		
+		// !!!!!!!!!!!!!!! губернии - ?type=provinces 
+		//var dataArr = getRequest(this.serverPageUrl,{'type':'provinces'});
+		//var nameArr = ['ID','Название','XP','Звёзды','Монеты'];
+		
+		/*
 		var userData = getRequest(this.user.serverPageUrl,{});
 		
-		//?beginPeriod=2017-05-01&endPeriod=2017-05-20
-		//?type=users
-		/*
 		for(var i=0; i<dataArr.length; i++)
 			for(var j=0; j<userData.length; j++)
 			if(dataArr[i].userId == userData[j].id){
