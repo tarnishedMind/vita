@@ -44,7 +44,7 @@ function setPage(fullPageUrl){
 	let item = new itemsPage("http://vitalandru.ru/avatar/items.php",Array());
 	let itemsOnAvatar = new itemsOnAvatarPage("http://vitalandru.ru/avatar/itemsOnAvatar.php",Array(userCredental, item));
 	let purchase = new purchasePage("http://vitalandru.ru/avatar/purchase.php",Array(userCredental, item));
-	let rating = new ratingPage("http://vitalandru.ru/jobs/rating.php",Array(sanatorium, province, rank));// 6. Последний параметр это подключаемые сущности, если они нужны. В твоем случае возможно понадобятся сущности team, sanatorium и userCerdental (но это не точно, пишу по памяти)  
+	let rating = new ratingPage("http://vitalandru.ru/jobs/rating.php",Array(sanatorium, province, rank, team));// 6. Последний параметр это подключаемые сущности, если они нужны. В твоем случае возможно понадобятся сущности team, sanatorium и userCerdental (но это не точно, пишу по памяти)  
 
   window.names = [ 
     'teams',
