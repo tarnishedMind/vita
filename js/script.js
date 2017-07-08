@@ -184,6 +184,8 @@ function formMenu(){
 //	menuItemsArr.push({name:"Отметки постов", tag:'likes', icon:''});	
 //	menuItemsArr.push({name:'Информация о постах', tag:'postInfo', icon:''});	
 //  menuItemsArr.push({name:'', tag:'', icon:''});
+
+	menuItemsArr.push({name:'Рейтинг', tag:'rating', icon:'', header:''});
 	
 	menu = new dynamicMenu(menuItemsArr);
 }

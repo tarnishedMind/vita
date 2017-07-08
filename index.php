@@ -49,6 +49,9 @@
 		<script src="./js/pages/itemsPage.js"></script>
 		<script src="./js/pages/itemsOnAvatarPage.js"></script>
 		<script src="./js/pages/purchasePage.js"></script>
+		
+		<script src="./js/pages/ratingPage.js"></script>
+		
 		<link rel="stylesheet" href="./fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 		
 		<!-- для календаря -->

@@ -44,7 +44,7 @@ function setPage(fullPageUrl){
 	let item = new itemsPage("http://vitalandru.ru/avatar/items.php",Array());
 	let itemsOnAvatar = new itemsOnAvatarPage("http://vitalandru.ru/avatar/itemsOnAvatar.php",Array(userCredental, item));
 	let purchase = new purchasePage("http://vitalandru.ru/avatar/purchase.php",Array(userCredental, item));
-	
+	let rating = new ratingPage("http://vitalandru.ru/values/values.php",Array(sanatorium, province, rank));// 6. Последний параметр это подключаемые сущности, если они нужны. В твоем случае возможно понадобятся сущности team, sanatorium и userCerdental (но это не точно, пишу по памяти)  
 
   window.names = [ 
     'teams',
@@ -67,6 +67,7 @@ function setPage(fullPageUrl){
 	'products',
 	'purchases',
 	'itemsOnAvatar',
+	'rating',
   ];
 	
   window.notAdderPages = [ 
@@ -77,6 +78,7 @@ function setPage(fullPageUrl){
 	'diagramDepartment',
 	'itemsOnAvatar',
 	'purchases',
+	'rating',
   ];
   
   window.graphicsPages = [ 
@@ -356,6 +358,12 @@ function pageLoad(pageName){
 		/*case 'show':
 			alert('QR-коды генерируются заново каждый раз, Вы не можете посмотреть предыдущий. Пожалуйста, сгенерируйте новый.');
 		break;*/
+		case 'rating':
+			$('#pp').css('display','none');
+			$( ".toggle-btn" ).data('open',false);
+			$('#table-block').append(rating.formTableBlock());
+			setOperationsClicker(Array('delete'))
+		break;
 	}
 	
 	// кусок кода ниже должен ОБЯЗАТЕЛЬНО лежать после switch-а
@@ -909,6 +917,15 @@ function pageLoad(pageName){
 					$('#table-block').empty();
 					$('#table-block').append(purchase.formTableBlock());
 					setOperationsClicker(Array('delete','reload'))
+				break;
+				case 'rating':
+					console.log(idArr)
+					$('#pp').css('display','none');
+					$( ".toggle-btn" ).data('open',false);
+					rating.setDeleteClicker(idArr);
+					$('#table-block').empty();
+					$('#table-block').append(rating.formTableBlock());
+					setOperationsClicker(Array('delete'))
 				break;
 			};
 		});
