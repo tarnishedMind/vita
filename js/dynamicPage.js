@@ -47,7 +47,7 @@ class dynamicPage {
 		
 		return edit;
 	} 
-  
+  //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   formTableBlock(nameArr, answer, operationsArr=Array()) {
 
 	var table = element('table', null, null, null, null);

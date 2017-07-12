@@ -43,5 +43,15 @@ class diagramDepartmentPage extends dynamicPage {
 		do_after_google_chart_loads(() => {
       show_data(2, graphicData)
     });;
+	
+	function resizeDiag(){// позволяет масштабировать график при изменении размеров окна
+		window.onresize = function(){// Ловим изменение окна
+		//alert('Размер окна был изменен!');
+		do_after_google_chart_loads(() => {show_data(2, graphicData)}); // Рисуем график
+		}
+	}	
+	resizeDiag();
+	
+	
 	}
 }

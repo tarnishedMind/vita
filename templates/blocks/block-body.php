@@ -46,7 +46,7 @@
 					</div>
 				</div>
 			<div id="search-block-line"></div>
-		</div> 
+		</div> 	
 		
 			<div id="printBlock"></div>
 			<div id="table" class="row no-margin" style="height: 0px; //Магическое число!">	

@@ -72,10 +72,10 @@
 		<div class="row header no-margin">
 			<? include("./templates/header.php"); ?>
 		</div>
-		<div class="row body no-margin">
+		<div id="insert" class="row body no-margin">
 			<? include("./templates/body.php"); ?>
 		</div>
-		<div class="row footer no-margin navbar-fixed-bottom">
+		<div  class="row footer no-margin navbar-fixed-bottom">
 			<? include("./templates/footer.php"); ?>
 		</div>
 		

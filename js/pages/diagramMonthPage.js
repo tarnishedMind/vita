@@ -9,7 +9,6 @@ function get_date(element) {
   return date;
 }
 
-
 class diagramMonthPage extends dynamicPage {
 	constructor(serverPageUrl, linkObjectsArr) {
 		super(serverPageUrl, linkObjectsArr)
@@ -21,7 +20,7 @@ class diagramMonthPage extends dynamicPage {
     alert('Введите корректный интервал');
   }
 
-  buildForDepartment(departmentData) {
+  buildForDepartment(departmentData){
     let id = this.current_id;
     function reformateDate(date) {
       let b = date.split('.');
@@ -31,7 +30,9 @@ class diagramMonthPage extends dynamicPage {
     function toTime(date) {
       let b = date.split('-');
       return new Date(b[0], b[1] - 1, b[2]);
-    }
+    }	
+	
+	
 
     let time_begin = reformateDate(this.begin_date);
     let time_end   = reformateDate(this.end_date);
@@ -90,9 +91,21 @@ class diagramMonthPage extends dynamicPage {
 
     let time_interval = [toTime(time_begin), toTime(time_end)];
     console.log(time_interval);
-		do_after_google_chart_loads(() => show_data(1, g_data, time_interval)); //отрисовка!!!!!!!!!!
-  }
+	do_after_google_chart_loads(() => show_data(1, g_data, time_interval)); //отрисовка!!!!!!!!!!	
+	
+	
+	function resizeDiag(){// позволяет масштабировать график при изменении размеров окна
+		window.onresize = function(){// Ловим изменение окна
+		//alert('Размер окна был изменен!');
+		do_after_google_chart_loads(() => show_data(1, g_data, time_interval)); // Рисуем график
+		}
+	}	
+	resizeDiag();
+}
 
+
+  
+  
   init_calendar() {
     let dateFormat = "dd.mm.yy";
 
@@ -133,5 +146,24 @@ class diagramMonthPage extends dynamicPage {
       it.current_id = departmentId;
       it.buildForDepartment(it.departmentData);
     });
-	}
+	}	
+	
+	
+	
 }
+
+
+
+/*
+// Ловим изменение размера окна
+window.onresize = function (){    
+alert('Размер окна был изменен!');
+
+}
+
+
+while (true) {
+  
+}
+*/
+
