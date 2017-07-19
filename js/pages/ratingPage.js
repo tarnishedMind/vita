@@ -5,75 +5,45 @@ class ratingPage  extends dynamicPage {
 		this.province = linkObjectsArr[1];
 		this.rank = linkObjectsArr[2];
 		this.team = linkObjectsArr[3];
-	}	
-	
-	
-	formAddBlock() {
-		
-		function insertLiElems(){
-	var insertTag = document.getElementById("table");// мы получаем в переменную элемент по тегу table для дальнейшей вставки	
-	var ul = document.createElement('ul');// создаем элемент ul записывая в переменную
-	ul.className = 'nav nav-pills';	// присваиваем класс
-	//заполняем его внутренности
-	ul.innerHTML = '<li style="width:33%; text-align:center"><a href="#">Пользователи</a></li><li style="width:33%; text-align:center"><a href="#">Отряды</a></li><li style="width:33%; text-align:center"><a href="#">Губернии</a></li>';		
-	//insertTag.appendChild(ul);	
-	insertTag.insertBefore(ul, insertTag.firstChild);//осуществляем вставку по полученному тегу до первого элемента данного тега
-	return ul;
-	}
-		insertLiElems();
-		/*
-		super.formAddBlock();
-		
-		var globalDiv = element();
-		$(globalDiv).append(element('input', {'type':'hidden','value':'','id':'id','name':'id'}, null, null, null));
-		var l1 = element('label', {'for':'name'}, null, null, ['Название губернии']);
-		var i1 = element('input', {'name':'name','type':'text','placeholder':'Название губернии','id':'name'}, null, ["form-control"], null);
-		$(globalDiv).append(element('div', null, null, ["form-group"], [l1,i1]));
-		$(globalDiv).append(element('input', {'type':'submit', 'value':"Добавить запись",'id':'add'}, {"float":"right"}, ["update-btn", "btn", "btn-default"], null));
-		//return globalDiv;*/
 	}
 	
-	formEditBlock() {
-		/*
-		super.formEditBlock();
-		
-		var globalDiv = element();
-		$(globalDiv).append(element('input', {'type':'hidden','value':'','id':'id','name':'id'}, null, null, null));
-		var l1 = element('label', {'for':'name'}, null, null, ['Название губернии']);
-		var i1 = element('input', {'name':'name','type':'text','placeholder':'Название губернии','id':'name'}, null, ["form-control"], null);
-		$(globalDiv).append(element('div', null, null, ["form-group"], [l1,i1]));
-		$(globalDiv).append(element('input', {'type':'submit', 'value':"Изменить запись", 'id':'edit'}, {"float":"right"}, ["update-btn", "btn", "btn-default"], null));
-		//return globalDiv;*/
-	}
-	
+
 	
 	formTableBlock(){
 		
-	var rating = this;
-/*
-!!! ВСТАВЛЯЕТСЯ ПОСЛЕ ОБЛАСТИ ФОРМЫ ПОИСКА
-<ul class="nav nav-pills">
-  <li style="width:33%; text-align:center"><a href="#">Пользователи</a></li>
-  <li style="width:33%; text-align:center"><a href="#">Отряды</a></li>
-  <li style="width:33%; text-align:center"><a href="#">Губернии</a></li>
-</ul>
-*/
-	var insertTag = document.getElementById("table");// мы получаем в переменную элемент по тегу table для дальнейшей вставки	
-	var ul = document.createElement('ul');// создаем элемент ul записывая в переменную
+	var rating = this; // будет необходимо дальше для объектного обращения
+
+	/* 
+	!!!
+	!!!	Итак, первым действием мы осуществляем вставку таблички с переключаемыми вкладками.
+	!!!	
+	*/
+	var insertTag = document.getElementById("table"); // мы получаем в переменную элемент по тегу table для дальнейшей вставки	
+	var ul = document.createElement('ul'); // создаем элемент ul записывая в переменную
 	ul.className = 'nav nav-pills';	// присваиваем класс
+	ul.style.background = 'lightgrey';
+	//ul.style.backgroundimage = 'linear-gradient(270deg, azure, paleturquoise, lightskyblue, azure)';
+	ul.style.height = '35px';	
 	//заполняем его внутренности
-	ul.innerHTML = '<li id="li1" style="width:33%; text-align:center"><span>Пользователи</span></li><li id="li2" style="width:33%; text-align:center"><span>Отряды</span></li><li id="li3" style="width:33%; text-align:center"><span>Губернии</span></li>';		
+	ul.innerHTML = '<li id="li1" style="width:33%; text-align:center;"><span style="margin-top: 6px; cursor: pointer" class="badge">Пользователи</span></li><li id="li2" style="width:33%; text-align:center"><span style="margin-top: 6px;cursor: pointer" class="badge">Отряды</span></li><li id="li3" style="width:33%; text-align:center"><span style="margin-top: 6px;cursor: pointer" class="badge">Губернии</span></li>';		
 	//insertTag.appendChild(ul);	
-	insertTag.insertBefore(ul, insertTag.firstChild);//осуществляем вставку по полученному тегу до первого элемента данного тега
+	insertTag.insertBefore(ul, insertTag.firstChild); //осуществляем вставку по полученному тегу до первого элемента данного тега
 	
+	/* 
+	!!!
+	!!!	Далее мы создаём три div элемента, первый имеет стандартное свойство display, два других - скрыты.
+	!!! Каждй div получает свой номер а затем вставляется в ранее созданную таблицу.
+	!!!
+	*/
 	var div1 = document.createElement("div");
-	//div1.style.display = 'none';
-	
+	//div1.style.display = 'none';	
 	div1.style.height = '100px';
 	//div1.style.background = 'red';
-	$(div1).attr('id','div1');
-	insertTag.appendChild(div1);
-	$('#div1').append(rating.formTableForDiv3());
+	$(div1).attr('id','div1');// присваиваем идентификатор 'div1' для элемента который хранится в переменной div1
+	insertTag.appendChild(div1);// вставляем наш div1 в ранее созданную табличку
+	
+	// мы уже вставляем в тег данные, чтобы они были открыты  
+	$('#div1').append(rating.formTableForDiv1()); // данные открытые ПО УМОЛЧАНИЮ
 	
 	var div2 = document.createElement("div");
 	div2.style.display = 'none';
@@ -90,9 +60,16 @@ class ratingPage  extends dynamicPage {
 	insertTag.appendChild(div3);
 	
 	
-	
-	
-	//var rating = this;
+	/* 
+	!!!
+	!!!	События кликов для каждого li-элемента
+	!!!	1 - Кликаем по нашей вкладке.
+	!!! 2 - Запускается функция отображения div элемента
+	!!! 3 - div очищается чтобы не допустить наложения таблиц (выгруз таблицы ведь производится в сам div)
+	!!! 4 - производится вставка таблицы которая строится соответствующим методом formTableForDiv, обращаемся через rating которому передано this вне тела функции
+	!!! 
+	!!! li элементы задаются еще при создании вкладок куском через innerHTML 
+	*/
 	$('#li1').click(function(){
 		showDiv1();	
 		$('#div1').empty();
@@ -114,10 +91,20 @@ class ratingPage  extends dynamicPage {
 	
 	/*
 	var insertTag = document.getElementById("div1");
-	insertTag.click = function(){
-		
-	}*/
+	insertTag.click = function(){		
+	}
+	*/
 	
+	/* 
+	!!!
+	!!!	Функции
+	!!!	1 - Кликаем по нашей вкладке.
+	!!! 2 - Запускается функция отображения div элемента
+	!!! 3 - div очищается чтобы не допустить наложения таблиц (выгруз таблицы ведь производится в сам div)
+	!!! 4 - производится вставка таблицы которая строится соответствующим методом formTableForDiv, обращаемся через rating которому передано this вне тела функции
+	!!! 
+	!!! li элементы задаются еще при создании вкладок куском через innerHTML 
+	*/
 	function showDiv1(){
 		var id = document.getElementById("div1");
 		id.style.display = 'block';
@@ -141,33 +128,19 @@ class ratingPage  extends dynamicPage {
 		id1.style.display = 'none';
 		var id2 = document.getElementById("div3");
 		id2.style.display = 'block';		
-	}
-		
-/*		
-		var globalUl = element('ul',null,null,['thumbnails'],null);	
-		// !!!!!!!!!!!!! НАЧАЛО 3 ТАБЛИЦЫ!!!!!!!!!!!!!!! ?type=provinces 
-		var dataArr = getRequest(this.serverPageUrl,{'type':'provinces'});
-		var nameArr = ['ID','Название','XP','Звёзды','Монеты'];
-		// !!!!!!!!!!!!!! КОНЕЦ 3 ТАБЛИЦЫ!!!!!!!!!!!!!!! ?type=provinces		
-		var tt = super.formTableBlock(nameArr, dataArr);
-		$(tt).addClass("table table-bordered");	
-
-		return $(tt);*/
-		
-			
-				
-		
-	}
-
+	}		
+	}	
+    /*
+	!!	Таблица пользователи
+	!!	?type=users
+	!!	Строится в объект tt
+	*/
 	formTableForDiv1(){
-		// !!!!!!!!!!!!!!!!! НАЧАЛО 1 ТАБЛИЦА !!!!!!!! пользователи - ?type=users
-		
+				
 		var dataArr = getRequest(this.serverPageUrl,{'type':'users'});
-		var nameArr = ['ID','Отряд','Звание','Имя','Фамилия','Пол','Статус подтверждения','XP','Звёзды','Монеты'];				
+		var nameArr = ['ID','Отряд','Звание','Имя','Фамилия','Пол','Статус подтверждения','XP','Звёзды','Монеты'];		
 		
-		
-		var teamData = getRequest(this.team.serverPageUrl,{});
-		
+		var teamData = getRequest(this.team.serverPageUrl,{});		
 		for(var i=0; i<dataArr.length; i++)
 			for(var j=0; j<teamData.length; j++)
 			if(dataArr[i].teamId == teamData[j].id){
@@ -175,29 +148,31 @@ class ratingPage  extends dynamicPage {
 				break;
 			}
 			
-		var rankData = getRequest(this.rank.serverPageUrl,{});
-		
+		var rankData = getRequest(this.rank.serverPageUrl,{});		
 		for(var i=0; i<dataArr.length; i++)
 			for(var j=0; j<rankData.length; j++)
 			if(dataArr[i].rankId == rankData[j].id){
 				dataArr[i].rankId = rankData[j].rankText;
 				break;
 			}	
-		// !!!!!!!!!!!!!!! КОНЕЦ 1 ТАБЛИЦА!!!!!!!! пользователи - ?type=users
+		
 		var tt = super.formTableBlock(nameArr, dataArr);
 		$(tt).addClass("table table-bordered");
 		
 		return $(tt);
 	}
 	
+	/*
+	!!	Таблица отряды
+	!!	Строится в объект tt
+	!!	?type=users
+	*/
 	formTableForDiv2(){
-		// !!!!!!!!!!!! НАЧАЛО 2 ТАБЛИЦА!!!!!!!!!!!!отряды - ?type=teams
+		
 		var dataArr = getRequest(this.serverPageUrl,{'type':'teams'});
-		var nameArr = ['ID','Название','Санаторий','Губерния','XP','Звёзды','Монеты'];
+		var nameArr = ['ID','Название','Санаторий','Губерния','XP','Звёзды','Монеты'];		
 		
-		
-		var provinceData = getRequest(this.province.serverPageUrl,{});
-		
+		var provinceData = getRequest(this.province.serverPageUrl,{});		
 		for(var i=0; i<dataArr.length; i++)
 			for(var j=0; j<provinceData.length; j++)
 			if(dataArr[i].provinceId == provinceData[j].id){
@@ -205,31 +180,37 @@ class ratingPage  extends dynamicPage {
 				break;
 			}
 			
-		var sanatoriumData = getRequest(this.province.serverPageUrl,{});
-		
+		var sanatoriumData = getRequest(this.province.serverPageUrl,{});		
 		for(var i=0; i<dataArr.length; i++)
 			for(var j=0; j<provinceData.length; j++)
 			if(dataArr[i].sanatoriumId == sanatoriumData[j].id){
 				dataArr[i].sanatoriumId = sanatoriumData[j].name;
 				break;
 			}			
-		// !!!!!!!!!!! КОНЕЦ 2 ТАБЛИЦА!!!!!!!!!!!!отряды - ?type=teams
+		
 		var tt = super.formTableBlock(nameArr, dataArr);
 		$(tt).addClass("table table-bordered");	
 
 		return $(tt);
 	}
 	
+	/*
+	!!	Таблица губернии
+	!!	?type=provinces 
+	!!	Строится в объект tt
+	*/
 	formTableForDiv3(){
-		// !!!!!!!!!!!!! НАЧАЛО 3 ТАБЛИЦЫ!!!!!!!!!!!!!!! ?type=provinces 
+		
 		var dataArr = getRequest(this.serverPageUrl,{'type':'provinces'});
 		var nameArr = ['ID','Название','XP','Звёзды','Монеты'];
-		// !!!!!!!!!!!!!! КОНЕЦ 3 ТАБЛИЦЫ!!!!!!!!!!!!!!! ?type=provinces		
+				
 		var tt = super.formTableBlock(nameArr, dataArr);
 		$(tt).addClass("table table-bordered");	
 		
 		return $(tt);
 	}
+	
+	
 	
 	setSearchClicker(searchString){
 		var foundDataArr = super.setSearchClicker(searchString);

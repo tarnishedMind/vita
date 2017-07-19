@@ -56,4 +56,8 @@
 .span3 > .thumbnail > p { 
 	 margin: 2% 3%;
 }
+
+ul li span:hover{
+	transform: scale(1.25);
+}
    

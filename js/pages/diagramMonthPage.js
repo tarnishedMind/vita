@@ -158,10 +158,7 @@ class diagramMonthPage extends dynamicPage {
 // Ловим изменение размера окна
 window.onresize = function (){    
 alert('Размер окна был изменен!');
-
 }
-
-
 while (true) {
   
 }
